@@ -1,0 +1,8 @@
+.debhelper
+.vagrant
+02-delivery-docker/.registry
+03-run-ansible/env
+03-run-systemd/shbr-echo/build/debian/files
+03-run-systemd/shbr-echo/build/debian/shbr-echo*
+03-run-systemd/shbr-echo/build/shbr-echo
+shbr-echo_1.0.0-1_amd64.*

@@ -1,0 +1,11 @@
+- hosts: "all"
+  connection: local
+  tasks:
+    - name: "shbr-echo : container"
+      docker_container:
+        name: "shbr-03-run-ansible"
+        restart_policy: 'always'
+        state: 'started'
+        image: 'cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest'
+        ports:
+          - "10000:10000"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shbr-echo-bluegreen
+  labels:
+    app: shbr-echo-bluegreen
+spec:
+  type: NodePort
+  ports:
+  - port: 10000
+    nodePort: 32001
+    protocol: TCP
+  selector:
+    app: shbr-echo
+    version: "2"

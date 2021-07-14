@@ -1,0 +1,24 @@
+name: shbr-echo
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  docker-build:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: make docker-build
+        working-directory: 01-package-docker
+  docker-push:
+    needs: docker-build
+    runs-on: self-hosted
+    env:
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    steps:
+      - run: echo $DOCKER_PASSWORD | docker login --username json_key --password-stdin cr.yandex
+      - run: make docker-push
+        working-directory: 01-package-docker
