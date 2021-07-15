@@ -18,6 +18,7 @@ RUN apt-get autoremove -y \
     && rm -rf /root/.cache
 
 COPY --from=builder /shbr-echo /shbr-echo
+ADD .screenrc /root/.screenrc
 
 EXPOSE 10000
 CMD ["/bin/tail", "-f", "/dev/null"]
