@@ -22,3 +22,8 @@ jobs:
       - run: echo $DOCKER_PASSWORD | docker login --username json_key --password-stdin cr.yandex
       - run: make docker-push
         working-directory: 01-package-docker
+  deploy:
+    needs: docker-push
+    runs-on: self-hosted
+    steps:
+      - run: kubectl -n shbr rollout restart deployment/shbr-echo

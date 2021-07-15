@@ -16,5 +16,6 @@ spec:
     spec:
       containers:
         - image: cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest
+          imagePullPolicy: "Always"
           name: shbr-echo
       restartPolicy: Always
