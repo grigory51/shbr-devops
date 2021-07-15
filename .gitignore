@@ -1,4 +1,5 @@
 .debhelper
+.idea
 .vagrant
 02-delivery-docker/.registry
 03-run-ansible/env
