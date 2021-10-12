@@ -1,0 +1,7 @@
+.vagrant
+shbr-echo_1.0.0-1_amd64.*
+shbr-echo/build/debian/*
+!shbr-echo/build/debian/changelog
+!shbr-echo/build/debian/compat
+!shbr-echo/build/debian/control
+!shbr-echo/build/debian/rules

@@ -1,0 +1,10 @@
+[Unit]
+Description=shbr-echo
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/shbr-echo
+
+[Install]
+WantedBy=multi-user.target

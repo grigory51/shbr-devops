@@ -1,0 +1,45 @@
+Vagrant.configure("2") do |config|
+    config.vm.box_check_update = false
+    config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
+
+    config.vm.define "minikube" do |node|
+        node.vm.box = "ubuntu/focal64"
+        node.vm.hostname = "minikube"
+        node.vagrant.host = "minikube"
+
+        node.vm.provider "virtualbox" do |v|
+            v.name = "minikube"
+            v.memory = 2560
+        end
+
+        node.vm.provision "shell" do |s|
+        s.inline = <<-SHELL
+        set -e
+        apt-get update
+        apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update
+        apt-get install -y docker-ce docker-ce-cli docker-compose containerd.io conntrack
+        systemctl enable docker
+        systemctl start docker
+        usermod -a -G docker vagrant
+
+        curl -L https://github.com/kubernetes/minikube/releases/download/v1.22.0/minikube_1.22.0-0_amd64.deb > minikube_1.22.0-0_amd64.deb
+        dpkg -i minikube_1.22.0-0_amd64.deb
+
+        snap install kubectl --classic
+        curl -sS https://webinstall.dev/k9s | sudo -u vagrant bash
+
+        mkdir /actions-runner && pushd /actions-runner
+        curl -O -L https://github.com/actions/runner/releases/download/v2.278.0/actions-runner-linux-x64-2.278.0.tar.gz
+        tar xzf ./actions-runner-linux-x64-2.278.0.tar.gz
+        chown -R vagrant:vagrant /actions-runner
+        popd
+        SHELL
+        s.privileged = true
+        end
+    end
+end

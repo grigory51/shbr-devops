@@ -1,7 +1,0 @@
-Origin: shbr
-Label: shbr
-Codename: focal
-Architectures: amd64
-Components: contrib
-Description: shbr
-SignWith: 

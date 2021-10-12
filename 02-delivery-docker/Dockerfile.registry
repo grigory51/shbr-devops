@@ -1,3 +1,0 @@
-FROM registry:2
-
-RUN apk add tcpdump ngrep bash
