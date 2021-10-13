@@ -1,4 +1,4 @@
-FROM golang:1.16.4 as builder
+FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-projects:latest
 WORKDIR /
 
 ADD main.go main.go
