@@ -1,15 +1,7 @@
-FROM golang:1.16.4 as builder
-WORKDIR /
-
-ADD main.go main.go
-RUN go build -o shbr-echo main.go
-RUN chmod a+x shbr-echo
-
-
-FROM ubuntu:focal
+FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y screen tmux curl net-tools iproute2
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y less screen tmux curl net-tools iproute2
 RUN apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
@@ -17,7 +9,6 @@ RUN apt-get autoremove -y \
     && rm -rf /var/log/apt\
     && rm -rf /root/.cache
 
-COPY --from=builder /shbr-echo /shbr-echo
 ADD .screenrc /root/.screenrc
 
 EXPOSE 10000

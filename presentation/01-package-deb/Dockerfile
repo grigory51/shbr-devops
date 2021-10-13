@@ -15,6 +15,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java16-installer
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y python3 python3-pip
 RUN pip3 install aiohttp
 
+# Установка пакетов для сборки deb
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y debhelper build-essential
 RUN apt-get autoremove -y \
     && apt-get clean \

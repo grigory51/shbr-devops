@@ -1,12 +1,4 @@
-FROM golang:1.16.4 as builder
-WORKDIR /
-
-ADD main.go main.go
-RUN go build -o shbr-echo main.go
-RUN chmod a+x shbr-echo
-
-
-FROM ubuntu:focal
+FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y supervisor curl iproute2
@@ -18,8 +10,6 @@ RUN apt-get autoremove -y \
     && rm -rf /root/.cache
 
 ADD shbr.conf /etc/supervisor/conf.d
-COPY --from=builder /shbr-echo /shbr-echo
-
 
 EXPOSE 10000
 CMD ["supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]

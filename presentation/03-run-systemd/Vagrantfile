@@ -2,6 +2,11 @@ Vagrant.configure("2") do |config|
     config.vm.box_check_update = false
     config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
 
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder "../../projects/python", "/python"
+    config.vm.synced_folder "../../projects/java", "/java"
+    config.vm.synced_folder "./shbr-echo", "/shbr-echo"
+
     config.vm.define "03-run-systemd" do |node|
       node.vm.box = "ubuntu/focal64"
       node.vm.hostname = "03-run-systemd"

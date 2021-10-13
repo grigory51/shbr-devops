@@ -1,4 +1,5 @@
 #!/bin/bash
 set -ex
 
-go build -o shbr-echo ../main.go
+../java/gradlew bootJar -p ../java -PbuildDir=$(pwd)
+cp ../python/main.py ./
