@@ -1,10 +1,10 @@
 [Unit]
-Description=shbr-echo
+Description=shbr-echo-java
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/shbr-echo
+ExecStart=/usr/bin/java -jar /usr/bin/shbr-echo.jar
 
 [Install]
 WantedBy=multi-user.target

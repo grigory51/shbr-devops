@@ -1,0 +1,10 @@
+[Unit]
+Description=shbr-echo-python
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/bin/shbr-echo.py
+
+[Install]
+WantedBy=multi-user.target

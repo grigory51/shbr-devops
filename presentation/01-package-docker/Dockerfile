@@ -45,4 +45,5 @@ ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 EXPOSE 10000
+ENV LANG=java
 CMD ["/entrypoint.sh"]
