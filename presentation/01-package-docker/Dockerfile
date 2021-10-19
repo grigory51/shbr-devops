@@ -1,4 +1,3 @@
-FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-projects:latest as builder
 #WORKDIR /shbr-echo
 #
 ## установка базовых пакетов
@@ -39,7 +38,7 @@ RUN apt-get autoremove -y \
     && rm -rf /root/.cache
 
 #COPY --from=builder /shbr-echo/java/build/libs/java-0.0.1-SNAPSHOT.jar /shbr-echo.jar
-COPY --from=builder /shbr-echo/python/main.py /shbr-echo.py
+ADD  ./main.py /shbr-echo.py
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
