@@ -13,5 +13,7 @@ cd:
 
 ci:
   stage: deploy
+  dependencies:
+    - cd
   script:
     - kubectl -n shbr rollout restart deployment/shbr-echo
