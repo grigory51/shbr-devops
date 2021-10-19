@@ -8,7 +8,7 @@ cd:
   stage: deploy
   script:
     - cd presentation/01-package-docker
-    - echo $DOCKER_PASSWORD | docker login --username json_key --password-stdin cr.yandex
+    - docker login --username json_key -p $DOCKER_PASSWORD cr.yandex
     - make docker-push
 
 ci:
