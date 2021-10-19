@@ -1,4 +1,4 @@
-#FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-projects:latest as builder
+FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-projects:latest as builder
 #WORKDIR /shbr-echo
 #
 ## установка базовых пакетов
