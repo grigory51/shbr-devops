@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
     config.vm.box_check_update = false
     config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
-    config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: '127.0.0.1', protocol: 'tcp', auto_correct: true
-    config.vm.network "forwarded_port", guest: 2222, host: 22, host_ip: '127.0.0.1', protocol: 'tcp', auto_correct: true
+    config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: '127.0.0.1', protocol: 'tcp', auto_correct: true
+    config.vm.network "forwarded_port", guest: 2222, host: 22022, host_ip: '127.0.0.1', protocol: 'tcp', auto_correct: true
 
     config.vm.define "ci" do |node|
         node.vm.box = "ubuntu/focal64"
@@ -36,6 +36,8 @@ Vagrant.configure("2") do |config|
         snap install kubectl --classic
         curl -sS https://webinstall.dev/k9s | sudo -u vagrant bash
 
+        curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
+        apt-get update
         apt-get install -y gitlab-runner
         SHELL
         s.privileged = true
