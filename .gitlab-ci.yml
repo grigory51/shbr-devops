@@ -16,4 +16,4 @@ ci:
   needs:
     - cd
   script:
-    - kubectl -n shbr rollout restart deployment/shbr-echo
+    - kubectl -n shbr rollout restart 'deployment/shbr-echo'
