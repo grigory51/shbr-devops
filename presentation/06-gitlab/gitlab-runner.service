@@ -1,0 +1,8 @@
+[Unit]
+Description=gitlab-runner
+
+[Service]
+ExecStart=/usr/bin/gitlab-runner run --working-directory /home/vagrant/gitlab-runner
+
+[Install]
+WantedBy=default.target

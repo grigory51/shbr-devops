@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
         curl -L https://github.com/kubernetes/minikube/releases/download/v1.23.2/minikube_1.23.2-0_amd64.deb > minikube_1.23.2-0_amd64.deb
         dpkg -i minikube_1.23.2-0_amd64.deb
-        sudo -u vagrant minikube start --driver=docker --container-runtime=containerd --keep-context=true --wait=all
+        sudo -u vagrant minikube start --driver=none
 
         snap install kubectl --classic
         curl -sS https://webinstall.dev/k9s | sudo -u vagrant bash
@@ -41,6 +41,8 @@ Vagrant.configure("2") do |config|
         apt-get update
         apt-get install -y gitlab-runner
         usermod -a -G docker gitlab-runner
+
+        mv ~/.bash_logout ~/.bash_logout.bak 2>/dev/null || true
         SHELL
         s.privileged = true
         end
