@@ -8,6 +8,6 @@
         state: 'started'
         image: 'cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest'
         env:
-          LANG: python
+          LANG: java
         ports:
           - "10000:10000"
