@@ -4,14 +4,14 @@ build:
     - cd presentation/01-package-docker
     - make docker-build
 
-push:
-  stage: cd
+cd:
+  stage: deploy
   script:
     - cd presentation/01-package-docker
     - echo $DOCKER_PASSWORD | docker login --username json_key --password-stdin cr.yandex
     - make docker-push
 
-deploy:
-  stage: ci
+ci:
+  stage: deploy
   script:
     - kubectl -n shbr rollout restart deployment/shbr-echo
