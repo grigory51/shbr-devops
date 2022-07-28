@@ -1,8 +1,8 @@
 docker-build:
-	docker build -t cr.yandex/crp5udmc090nv4rpkk6c/shbr-02-delivery-deb:latest .
+	docker build -t cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest .
 
 docker-run:
-	docker run -it cr.yandex/crp5udmc090nv4rpkk6c/shbr-02-delivery-deb:latest
+	docker run -it cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest
 
 docker-push:
-	docker push cr.yandex/crp5udmc090nv4rpkk6c/shbr-02-delivery-deb:latest
+	docker push cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest

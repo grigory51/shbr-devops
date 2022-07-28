@@ -1,4 +1,4 @@
-FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-projects:latest
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest
 
 # установка базовых пакетов
 RUN apt-get update

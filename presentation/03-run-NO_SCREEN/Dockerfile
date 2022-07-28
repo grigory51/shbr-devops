@@ -1,4 +1,4 @@
-FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y less screen tmux curl net-tools iproute2

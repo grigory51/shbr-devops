@@ -1,4 +1,4 @@
-FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-deb
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-deb
 
 # установка пакетов для ключей
 USER root

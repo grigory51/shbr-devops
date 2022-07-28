@@ -6,7 +6,7 @@
         name: "shbr-03-run-ansible"
         restart_policy: 'always'
         state: 'started'
-        image: 'cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest'
+        image: 'cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest'
         env:
           LANG: java
         ports:

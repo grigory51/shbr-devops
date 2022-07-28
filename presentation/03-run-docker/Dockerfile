@@ -1,1 +1,1 @@
-FROM cr.yandex/crp5udmc090nv4rpkk6c/shbr-01-package-docker:latest
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest
