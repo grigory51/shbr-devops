@@ -1,4 +1,4 @@
-FROM ubuntu:focal as builder
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest as builder
 
 WORKDIR /shbr-echo
 
@@ -40,7 +40,7 @@ RUN apt-get autoremove -y \
     && rm -rf /root/.cache
 
 COPY --from=builder /shbr-echo/java/build/libs/java-0.0.1-SNAPSHOT.jar /shbr-echo.jar
-ADD  ./main.py /shbr-echo.py
+COPY --from=builder /shbr-echo/python/main.py /shbr-echo.py
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
