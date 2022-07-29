@@ -7,9 +7,9 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim tree man-db sudo net
 # установка JDK
 RUN add-apt-repository ppa:linuxuprising/java
 RUN apt-get update
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-2 select true | /usr/bin/debconf-set-selections
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-2 seen true | /usr/bin/debconf-set-selections
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java16-installer
+RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 select true | /usr/bin/debconf-set-selections
+RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 seen true | /usr/bin/debconf-set-selections
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java17-installer
 
 # установка Python 3 и aiohttp
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y python3 python3-pip
