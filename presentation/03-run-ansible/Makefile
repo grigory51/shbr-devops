@@ -1,2 +1,2 @@
 play:
-	ANSIBLE_PYTHON_INTERPRETER=$$(pwd)/env/bin/python ansible-playbook -i inventory playbook.yaml
+	ANSIBLE_PYTHON_INTERPRETER=$$(pwd)/env/bin/python $$(pwd)/env/bin/ansible-playbook -i inventory playbook.yaml
