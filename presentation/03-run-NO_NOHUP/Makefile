@@ -2,7 +2,7 @@ docker-build:
 	docker build -t cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-no_nohup:latest .
 
 docker-run:
-	docker run -it --name shbr-03-run-no_nohup cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-no_nohup:latest
+	docker run -d -it --name shbr-03-run-no_nohup cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-no_nohup:latest
 
 docker-shell:
 	docker exec -it shbr-03-run-no_nohup /bin/bash
