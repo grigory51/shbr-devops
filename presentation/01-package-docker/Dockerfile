@@ -1,19 +1,19 @@
 FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest as builder
 
-WORKDIR /shbr-echo
+#WORKDIR /shbr-echo
 
 # установка базовых пакетов
-RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common
-
-# установка JDK
-RUN add-apt-repository ppa:linuxuprising/java
-RUN apt-get update
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 select true | /usr/bin/debconf-set-selections
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 seen true | /usr/bin/debconf-set-selections
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java17-installer
-
-RUN java/gradlew bootJar -p ./java
+#RUN apt-get update
+#RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common
+#
+## установка JDK
+#RUN add-apt-repository ppa:linuxuprising/java
+#RUN apt-get update
+#RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 select true | /usr/bin/debconf-set-selections
+#RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 seen true | /usr/bin/debconf-set-selections
+#RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java17-installer
+#
+#RUN java/gradlew bootJar -p ./java
 
 
 FROM ubuntu:focal
@@ -40,7 +40,7 @@ RUN apt-get autoremove -y \
     && rm -rf /root/.cache
 
 #COPY --from=builder /shbr-echo/java/build/libs/java-0.0.1-SNAPSHOT.jar /shbr-echo.jar
-COPY --from=builder /shbr-echo/python/main.py /shbr-echo.py
+COPY main.py /shbr-echo.py
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
