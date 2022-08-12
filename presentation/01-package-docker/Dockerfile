@@ -18,7 +18,7 @@ RUN java/gradlew bootJar -p ./java
 
 FROM ubuntu:focal
 # установка базовых пакетов
-#RUN apt-get update
+RUN apt-get update
 #RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common
 
 # установка Python
