@@ -34,6 +34,7 @@ USER shbr
 
 # наш проект
 ADD build /shbr-echo/build
+ADD hint.sh /shbr-echo
 RUN sudo chown -R shbr:shbr /shbr-echo
 RUN sudo chmod -R 755 /shbr-echo
 WORKDIR /shbr-echo

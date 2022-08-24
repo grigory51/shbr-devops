@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shbr-echo
+  labels:
+    app: shbr-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shbr-echo
+  template:
+    metadata:
+      labels:
+        app: shbr-echo
+    spec:
+      containers:
+        - image: cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest
+          imagePullPolicy: "Always"
+          name: shbr-echo
+      restartPolicy: Always

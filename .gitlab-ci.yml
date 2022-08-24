@@ -8,6 +8,7 @@ cd:
   stage: deploy
   script:
     - cd presentation/01-package-docker
+    # yc iam key create --service-account-name robot-presentation  --folder-id b1gee7rvb581ari0grs9 -o key.json
     - echo $DOCKER_PASSWORD | docker login --username json_key --password-stdin cr.yandex
     - make docker-push
 
