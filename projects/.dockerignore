@@ -1,3 +1,7 @@
+### CPP ###
+cpp/build_*
+
+### Java ###
 java/HELP.md
 java/.gradle
 java/build/
@@ -5,7 +9,7 @@ java/build/
 !java/**/src/main/**/build/
 !java/**/src/test/**/build/
 
-### STS ###
+### Java STS ###
 java/.apt_generated
 java/.classpath
 java/.factorypath
@@ -25,3 +29,4 @@ java/*.ipr
 java/out/
 !java/**/src/main/**/out/
 !java/**/src/test/**/out/
+
