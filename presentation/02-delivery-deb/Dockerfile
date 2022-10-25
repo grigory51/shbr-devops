@@ -21,5 +21,3 @@ ADD Release .
 RUN sudo chown -R shbr:shbr /usr/local/www/debs
 RUN sudo chmod -R 755 /shbr-echo
 RUN mkdir focal
-
-ENTRYPOINT ["/bin/bash"]

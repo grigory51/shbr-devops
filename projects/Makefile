@@ -1,8 +1,14 @@
+.EXPORT_ALL_VARIABLES:
+
+IMAGE = cr.yandex/crpamim8dasm0u97qtpf/shbr-projects
+DOCKER_BUILDKIT = 1
+BUILDKIT_PROGRESS = plain
+
 docker-build:
-	docker build -t cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest .
+	docker build . --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from=$$IMAGE:latest -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -it cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest
+	docker run -it $$IMAGE:latest
 
 docker-push:
-	docker push cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest
+	docker push $$IMAGE:latest

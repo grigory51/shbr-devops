@@ -1,3 +1,0 @@
-[submodule "projects/cpp"]
-	path = projects/cpp
-	url = git@github.com:grigory51/shbr-devops-cpp.git
