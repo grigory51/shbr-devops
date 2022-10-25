@@ -1,4 +1,7 @@
 #!/bin/bash
 set -e
 
-rm -f ./shbr-echo
+rm -rf ./shbr-echo \
+       ../cpp/build_release/_deps \
+      ./build-java \
+      ./build-python

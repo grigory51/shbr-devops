@@ -4,28 +4,41 @@ WORKDIR /shbr-echo
 
 # установка базовых пакетов
 RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim \
+                                                        tree \
+                                                        man-db \
+                                                        sudo \
+                                                        net-tools \
+                                                        software-properties-common \
+                                                        python3 python3-pip python3-dev virtualenv
 
 # установка пакетов для сборки CPP
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y git \
-                                                        cmake  \
-                                                        make \
-                                                        build-essential \
-                                                        libboost-all-dev  \
-                                                        libev-dev \
-                                                        libssl-dev \
-                                                        libcrypto++-dev \
-                                                        libyaml-cpp-dev \
-                                                        libhttp-parser-dev \
-                                                        libjemalloc-dev \
-                                                        libcurl4-openssl-dev \
-                                                        libspdlog-dev \
-                                                        libfmt-dev \
-                                                        libc-ares-dev \
-                                                        libcctz-dev \
-                                                        virtualenv
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y python3 python3-pip
-RUN pip3 install jinja2 voluptuous pyyaml
+# https://github.com/userver-framework/userver/blob/develop/scripts/docs/en/deps/ubuntu-22.04.md
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y  cmake \
+                                                         libboost1.67-dev \
+                                                         libboost-program-options1.67-dev \
+                                                         libboost-filesystem1.67-dev \
+                                                         libboost-locale1.67-dev \
+                                                         libboost-regex1.67-dev \
+                                                         libboost-iostreams1.67-dev \
+                                                         libev-dev \
+                                                         zlib1g-dev \
+                                                         libcurl4-openssl-dev \
+                                                         libcrypto++-dev \
+                                                         libyaml-cpp-dev \
+                                                         libssl-dev \
+                                                         libcctz-dev \
+                                                         libhttp-parser-dev \
+                                                         libjemalloc-dev \
+                                                         python3-protobuf \
+                                                         python3-jinja2 \
+                                                         python3-voluptuous \
+                                                         libbenchmark-dev \
+                                                         libgtest-dev \
+                                                         libgmock-dev \
+                                                         ccache \
+                                                         git
+RUN pip3 install pyyaml
 
 RUN make -C ./cpp build-release
 
