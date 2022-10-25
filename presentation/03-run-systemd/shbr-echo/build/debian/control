@@ -2,7 +2,7 @@ Source: shbr-echo
 Section: devel
 Priority: optional
 Maintainer: Grigory Ozhegov <ozhegov@yandex-team.ru>
-Build-Depends: build-essential, debhelper (>= 9), oracle-java17-installer
+Build-Depends: build-essential, debhelper (>= 9), oracle-java17-installer, cmake, git
 
 Package: shbr-echo
 Architecture: amd64

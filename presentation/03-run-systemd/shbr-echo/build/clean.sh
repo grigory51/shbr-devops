@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e
 
-rm -f ./shbr-echo
+rm -rf ./shbr-echo \
+      ./build-java \
+      ./build-python

@@ -3,15 +3,15 @@
 gpg --gen-key
 gpg --output key.pub --armor --export $KEYID
 
-dpkg-scanpackages focal/ > focal/Packages
-gzip --keep --force -9 focal/Packages
+dpkg-scanpackages jammy/ > jammy/Packages
+gzip --keep --force -9 jammy/Packages
 
-cat Release > focal/Release
-apt-ftparchive release focal/ >> focal/Release
+cat Release > jammy/Release
+apt-ftparchive release jammy/ >> jammy/Release
 
-gpg -abs -o focal/Release.gpg focal/Release
-gpg --clearsign --digest-algo SHA512 -o focal/InRelease focal/Release
+gpg -abs -o jammy/Release.gpg jammy/Release
+gpg --clearsign --digest-algo SHA512 -o jammy/InRelease jammy/Release
 
-echo 'deb http://localhost/debs/ focal/' > /etc/apt/sources.list.d/localhost.list
+echo 'deb http://localhost/debs/ jammy/' > /etc/apt/sources.list.d/localhost.list
 
 curl http://localhost/debs/key.pub | apt-key add -

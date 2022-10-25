@@ -1,0 +1,10 @@
+[Unit]
+Description=shbr-echo-cpp
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/shbr-echo --config /etc/shbr-echo/cpp/config.yaml
+
+[Install]
+WantedBy=multi-user.target

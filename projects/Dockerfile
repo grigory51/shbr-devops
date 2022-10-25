@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 ENV TERM=xterm-256color
 ENV LANG=en_US.UTF-8
@@ -22,8 +22,8 @@ RUN sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen \
 
 WORKDIR /shbr-echo
 
-RUN git clone https://github.com/grigory51/shbr-devops-cpp.git cpp && cd cpp && git submodule update --init
 COPY java /shbr-echo/java
 COPY python /shbr-echo/python
+RUN git clone https://github.com/grigory51/shbr-devops-cpp.git cpp && cd cpp && git submodule update --init
 
 ENTRYPOINT ["/usr/bin/fish"]
