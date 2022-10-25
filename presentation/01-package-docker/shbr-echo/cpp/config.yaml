@@ -1,0 +1,64 @@
+config_vars: /etc/shbr-echo/cpp/config_vars.yaml
+
+components_manager:
+  coro_pool:
+    initial_size: 500
+    max_size: 1000
+
+  task_processors:
+    main-task-processor:
+      worker_threads: $worker-threads
+      thread_name: main-worker
+
+    fs-task-processor:
+      thread_name: fs-worker
+      worker_threads: $worker-fs-threads
+
+  default_task_processor: main-task-processor
+
+  components:
+    server:
+      listener:
+        port: $server-port
+        task_processor: main-task-processor
+
+    tracer:
+        service-name: shbr_devops_cpp
+
+    dynamic-config:
+        fs-cache-path: ''
+
+    dynamic-config-fallbacks:
+        fallback-path: $dynamic-config-fallback-path
+
+    http-client:
+        load-enabled: $is_testing
+        fs-task-processor: fs-task-processor
+
+    logging:
+      fs-task-processor: fs-task-processor
+      loggers:
+        default:
+          file_path: '@stderr'
+          level: $logger-level
+          overflow_behavior: discard
+
+    testsuite-support: {}
+
+    tests-control:
+      load-enabled: $is_testing
+      path: /tests/{action}
+      method: POST
+      task_processor: main-task-processor
+
+    handler-ping:
+      path: /ping
+      method: GET
+      task_processor: main-task-processor
+      throttling_enabled: false
+      url_trailing_slash: strict-match
+
+    handler-echo:
+      path: /*
+      method: GET
+      task_processor: main-task-processor
