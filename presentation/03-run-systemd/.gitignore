@@ -1,5 +1,6 @@
 .vagrant
 shbr-echo_1.0.0-1_amd64.*
+shbr-echo-dbgsym*
 shbr-echo/build/*
 !shbr-echo/build/build.sh
 !shbr-echo/build/clean.sh

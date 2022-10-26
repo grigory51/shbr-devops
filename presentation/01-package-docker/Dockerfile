@@ -1,3 +1,5 @@
+FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest as builder-python
+
 FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-projects:latest as builder-cpp
 
 WORKDIR /shbr-echo
@@ -102,12 +104,12 @@ RUN apt-get autoremove -y \
     && rm -rf /var/log/apt\
     && rm -rf /root/.cache
 
+COPY --from=builder-python /shbr-echo/python/main.py /shbr-echo.py
+
 COPY --from=builder-java /shbr-echo/java/build/libs/java-0.0.1-SNAPSHOT.jar /shbr-echo.jar
 
 COPY --from=builder-cpp /shbr-echo/cpp/build_release/shbr_devops_cpp /shbr-echo
-ADD shbr-echo /etc/shbr-echo
-
-ADD main.py /shbr-echo.py
+ADD etc/shbr-echo /etc/shbr-echo
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh

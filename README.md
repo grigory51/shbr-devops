@@ -23,3 +23,9 @@ Java: [projects/java](/projects/java)
 Python: [projects/python](/projects/python)
 
 C++: [grigory51/shbr-devops-cpp](https://github.com/grigory51/shbr-devops-cpp)
+
+## F.A.Q
+
+### Как быстро предсобрать все примеры? 
+
+`make build` в корне репозитория
