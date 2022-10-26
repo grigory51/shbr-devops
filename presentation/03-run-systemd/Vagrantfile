@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
         s.inline = <<-SHELL
           set -e
           apt-get update
-          apt-get install -y software-properties-common debhelper build-essential
+          apt-get install -y software-properties-common debhelper build-essential fish
 
           add-apt-repository ppa:linuxuprising/java
           apt-get update
@@ -67,6 +67,12 @@ Vagrant.configure("2") do |config|
             git clone https://github.com/grigory51/shbr-devops-cpp.git /cpp && cd /cpp && git submodule update --init
           fi
           chown -R vagrant:vagrant /cpp
+
+          chsh -s /usr/bin/fish
+          sed -i  's/auth       required   pam_shells.so/auth       sufficient   pam_shells.so/g' /etc/pam.d/chsh
+          su -c '/usr/bin/chsh -s /usr/bin/fish' vagrant
+
+          mv ~/.bash_logout ~/.bash_logout.bak 2>/dev/null || true
         SHELL
         s.privileged = true
       end

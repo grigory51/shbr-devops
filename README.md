@@ -6,9 +6,7 @@
 
 1. Cборка: [deb](/presentation/01-package-deb), [docker](/presentation/01-package-docker)
 2. Доставка: [deb](/presentation/02-delivery-deb), [docker](/presentation/02-delivery-docker)
-3. Запуск: [антипример с nohup](/presentation/03-run-NO_NOHUP), [антипример со screen](/presentation/03-run-NO_SCREEN)
-   , [supervisor](/presentation/03-run-supervisor), [systemd](/presentation/03-run-systemd)
-   , [docker](/presentation/03-run-docker), [ansible](/presentation/03-run-ansible)
+3. Запуск: [антипример с nohup](/presentation/03-run-NO_NOHUP), [антипример со screen](/presentation/03-run-NO_SCREEN), [supervisor](/presentation/03-run-supervisor), [systemd](/presentation/03-run-systemd), [docker](/presentation/03-run-docker), [ansible](/presentation/03-run-ansible)
 
 ### E2
 
