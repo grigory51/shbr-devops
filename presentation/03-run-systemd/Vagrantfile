@@ -1,6 +1,7 @@
 Vagrant.configure("2") do |config|
     config.vm.box_check_update = false
-    config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
+    config.vbguest.auto_update = !Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.installer_options = { allow_kernel_upgrade: Vagrant.has_plugin?("vagrant-vbguest") } # vagrant plugin install vagrant-vbguest
 
     config.vm.synced_folder ".", "/vagrant", disabled: true
     config.vm.synced_folder "../../projects/python", "/python"

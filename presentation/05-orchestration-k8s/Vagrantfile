@@ -1,14 +1,15 @@
 Vagrant.configure("2") do |config|
     config.vm.box_check_update = false
-    config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
+    config.vbguest.auto_update = !Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.installer_options = { allow_kernel_upgrade: Vagrant.has_plugin?("vagrant-vbguest") } # vagrant plugin install vagrant-vbguest
 
-    config.vm.define "minikube" do |node|
+    config.vm.define "05-orchestration-k8s" do |node|
         node.vm.box = "ubuntu/jammy64"
-        node.vm.hostname = "minikube"
-        node.vagrant.host = "minikube"
+        node.vm.hostname = "05-orchestration-k8s"
+        node.vagrant.host = "05-orchestration-k8s"
 
         node.vm.provider "virtualbox" do |v|
-            v.name = "minikube"
+            v.name = "05-orchestration-k8s"
             v.memory = 2560
         end
 

@@ -1,6 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
-  config.vbguest.installer_options = { allow_kernel_upgrade: true } # vagrant plugin install vagrant-vbguest
+  config.vbguest.auto_update = !Vagrant.has_plugin?("vagrant-vbguest")
+  config.vbguest.installer_options = { allow_kernel_upgrade: Vagrant.has_plugin?("vagrant-vbguest") } # vagrant plugin install vagrant-vbguest
 
   (1..3).each do |i|
     config.vm.define "node-#{i}" do |node|
@@ -12,7 +13,8 @@ Vagrant.configure("2") do |config|
       node.vm.network "forwarded_port", guest: 9090 + i, host: 9090 + i, host_ip: '127.0.0.1', protocol: 'tcp', auto_correct: true
 
       node.vm.provider "virtualbox" do |v|
-        v.name = "05-orchestration-swarm-node-#{i}"
+        v.name = "node-#{i}"
+        v.customize ["modifyvm", :id, "--groups", "/05-orchestration-swarm"]
       end
 
       node.vm.provision "shell" do |s|

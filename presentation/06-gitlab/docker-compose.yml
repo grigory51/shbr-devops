@@ -2,20 +2,20 @@ version: "2.4"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:14.3.3-ce.0
+    image: gitlab/gitlab-ce:15.5.1-ce.0
     restart: always
     hostname: 'localhost'
     environment:
       GITLAB_ROOT_EMAIL: "shbr@yandex-team.ru"
       GITLAB_ROOT_PASSWORD: "yandex-shbr"
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost:8080'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2222
-        puma['port'] = 8081
+        external_url 'http://localhost:30080'
+        gitlab_rails['gitlab_shell_ssh_port'] = 10022
+        nginx['listen_port'] = 30080
     container_name: gitlab
     ports:
-      - '8080:8080'
-      - '2222:22'
+      - '30080:30080'
+      - '10022:22'
     volumes:
       - '/gitlab/etc:/etc/gitlab'
       - '/gitlab/logs:/var/log/gitlab'

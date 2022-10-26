@@ -27,5 +27,5 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             - name: RESTART
-              value: "2"
+              value: "1"
       restartPolicy: Always
