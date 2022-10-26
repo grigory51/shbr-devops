@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
   - port: 10000
-    nodePort: 32001
+    nodePort: 32000
     protocol: TCP
   selector:
     app: shbr-echo

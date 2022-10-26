@@ -18,7 +18,5 @@ spec:
           name: shbr-echo
           env:
             - name: PREFIX
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
+              value: "World, "
       restartPolicy: Always
