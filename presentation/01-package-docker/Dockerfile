@@ -104,8 +104,7 @@ RUN apt-get autoremove -y \
     && rm -rf /var/log/apt\
     && rm -rf /root/.cache
 
-#COPY --from=builder-python /shbr-echo/python/main.py /shbr-echo.py
-ADD main.py /shbr-echo.py
+COPY --from=builder-python /shbr-echo/python/main.py /shbr-echo.py
 
 COPY --from=builder-java /shbr-echo/java/build/libs/java-0.0.1-SNAPSHOT.jar /shbr-echo.jar
 
