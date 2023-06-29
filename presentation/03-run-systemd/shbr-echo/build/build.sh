@@ -9,7 +9,7 @@ mkdir -p ${BUILD_JAVA}
 mkdir -p ${BUILD_PYTHON}
 mkdir -p ${BUILD_GO}
 
-make -C /cpp build-release
+env -i PATH="$PATH" make -C /cpp build-release
 
 /java/gradlew bootJar -p ../java -PbuildDir=${BUILD_JAVA} --no-daemon
 
