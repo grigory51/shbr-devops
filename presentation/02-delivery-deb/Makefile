@@ -8,7 +8,10 @@ docker-build:
 	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run --rm --name 02-delivery-deb -it $$IMAGE:latest /usr/bin/fish
+	docker run --rm --name 02-delivery-deb --platform linux/amd64 -it $$IMAGE:latest /usr/bin/fish
+
+docker-shell:
+	docker exec -it 02-delivery-deb /usr/bin/fish
 
 docker-push:
 	docker push $$IMAGE:latest

@@ -8,7 +8,7 @@ docker-build:
 	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -it -d --name 03-run-supervisor $$IMAGE:latest
+	docker run -it -d --platform linux/amd64 --rm --name 03-run-supervisor $$IMAGE:latest
 
 docker-push:
 	docker push $$IMAGE:latest

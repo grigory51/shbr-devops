@@ -1,7 +1,6 @@
 Origin: shbr
 Label: shbr
-Codename: focal
+Codename: jammy
 Architectures: amd64
 Components: contrib
 Description: shbr
-SignWith: 

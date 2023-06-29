@@ -8,7 +8,7 @@ docker-build:
 	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -d -it --name 03-run-no_nohup $$IMAGE:latest
+	docker run -d --rm --platform linux/amd64 -it --name 03-run-no_nohup $$IMAGE:latest
 
 docker-shell:
 	docker exec -it 03-run-no_nohup /usr/bin/fish
