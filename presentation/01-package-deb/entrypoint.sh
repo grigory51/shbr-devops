@@ -1,5 +1,12 @@
 #!/bin/bash
+set -e
 
-sudo chown shbr:shbr /shbr-echo/cpp/build_release
+if [ -d /shbr-echo/cpp/build_release ]; then
+  sudo chown shbr:shbr /shbr-echo/cpp/build_release
+fi
 
-exec /usr/bin/fish
+if [ -d /home/shbr/.gradle ]; then
+  sudo chown shbr:shbr /home/shbr/.gradle
+fi
+
+exec "$@"

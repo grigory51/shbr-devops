@@ -8,7 +8,10 @@ docker-build:
 	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run --rm --name 01-package-deb -v 01-package-deb:/shbr-echo/cpp/build_release:rw --platform linux/amd64 -it $$IMAGE:latest
+	docker run --rm --name 01-package-deb \
+	-v 01-package-deb:/shbr-echo/cpp/build_release:rw \
+	-v 01-package-deb-gradle:/home/shbr/.gradle:rw \
+	--platform linux/amd64 -it $$IMAGE:latest /usr/bin/fish
 
 docker-push:
 	docker push $$IMAGE:latest

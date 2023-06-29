@@ -11,7 +11,7 @@ docker-run:
 	docker run --rm --name 01-package-docker --platform linux/amd64 -it $$IMAGE:latest
 
 docker-run-shell:
-	docker run -it $$IMAGE:latest /usr/bin/fish
+	docker run --rm --name 01-package-docker -it $$IMAGE:latest /usr/bin/fish
 
 docker-push:
 	docker push $$IMAGE:latest

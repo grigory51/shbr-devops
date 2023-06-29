@@ -5,7 +5,7 @@ DOCKER_BUILDKIT = 1
 BUILDKIT_PROGRESS = plain
 
 docker-build:
-	docker build -t $$IMAGE:latest .
+	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
 	docker run -it -d --name 03-run-no_screen $$IMAGE:latest

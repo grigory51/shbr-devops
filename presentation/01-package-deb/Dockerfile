@@ -77,6 +77,9 @@ RUN apt-get update && \
     && rm -rf /var/log/apt\
     && rm -rf /root/.cache
 
+# Отключаем сервисы, которые установились с зависимостями для СPP
+RUN systemctl disable postgresql redis networkd-dispatcher polkit unattended-upgrades
+
 # root без пароля для всех из группы sudo
 RUN sed -i  's/%sudo\tALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 

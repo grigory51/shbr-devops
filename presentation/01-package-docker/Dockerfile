@@ -94,16 +94,17 @@ RUN java/gradlew bootJar -p ./java
 
 
 FROM ubuntu:jammy-20230605
-# установка базовых пакетов
-RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common fish
 
-# установка Python
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y python3 python3-pip
-RUN pip3 install aiohttp
-
-# установка библиотек для CPP
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y libjemalloc2 \
+RUN sed -i 's/archive.ubuntu.com/mirror.yandex.ru/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirror.yandex.ru/g' /etc/apt/sources.list && \
+    apt-get update && \
+    # Установка базовых пакетов
+    DEBIAN_FRONTEND="noninteractive" apt-get install -y software-properties-common fish && \
+    # Установка Python
+    DEBIAN_FRONTEND="noninteractive" apt-get install -y python3 python3-pip && \
+    pip3 install aiohttp && \
+    # Установка библиотек для CPP
+    DEBIAN_FRONTEND="noninteractive" apt-get install -y libjemalloc2 \
                                                         libboost-locale1.74 \
                                                         libboost-filesystem1.74.0 \
                                                         libboost-program-options1.74.0 \
@@ -116,16 +117,15 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y libjemalloc2 \
                                                         libcrypto++8 \
                                                         libhttp-parser2.9 \
                                                         libev4 \
-                                                        libcurl4
-
-# установка JDK
-RUN add-apt-repository ppa:linuxuprising/java
-RUN apt-get update
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 select true | /usr/bin/debconf-set-selections
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-3 seen true | /usr/bin/debconf-set-selections
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java17-installer
-
-RUN apt-get autoremove -y \
+                                                        libcurl4 && \
+    # Установка JDK
+    add-apt-repository ppa:linuxuprising/java && \
+    apt-get update && \
+    /bin/echo debconf shared/accepted-oracle-license-v1-3 select true | /usr/bin/debconf-set-selections && \
+    /bin/echo debconf shared/accepted-oracle-license-v1-3 seen true | /usr/bin/debconf-set-selections && \
+    DEBIAN_FRONTEND="noninteractive" apt-get install -y oracle-java17-installer && \
+    # Чистка от работы apt и pip
+    apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/cache/* \

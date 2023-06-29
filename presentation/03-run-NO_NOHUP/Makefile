@@ -5,16 +5,16 @@ DOCKER_BUILDKIT = 1
 BUILDKIT_PROGRESS = plain
 
 docker-build:
-	docker build . -t $$IMAGE:latest -t $$IMAGE
+	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -d -it --name shbr-03-run-no_nohup $$IMAGE:latest
+	docker run -d -it --name 03-run-no_nohup $$IMAGE:latest
 
 docker-shell:
-	docker exec -it shbr-03-run-no_nohup /usr/bin/fish
+	docker exec -it 03-run-no_nohup /usr/bin/fish
 
 docker-kill:
-	docker kill shbr-03-run-no_nohup && docker rm shbr-03-run-no_nohup
+	docker kill 03-run-no_nohup && docker rm 03-run-no_nohup
 
 docker-push:
 	docker push $$IMAGE:latest
