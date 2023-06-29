@@ -6,7 +6,9 @@ ENV LC_TYPE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
-RUN apt-get update \
+RUN sed -i 's/archive.ubuntu.com/mirror.yandex.ru/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirror.yandex.ru/g' /etc/apt/sources.list && \
+    apt-get update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y locales fish vim curl git \
     && apt-get autoremove -y \
     && apt-get clean \
