@@ -20,6 +20,8 @@ Java: [projects/java](/projects/java)
 
 Python: [projects/python](/projects/python)
 
+Go: [projects/go](/projects/go)
+
 C++: [grigory51/shbr-devops-cpp](https://github.com/grigory51/shbr-devops-cpp)
 
 ## F.A.Q
