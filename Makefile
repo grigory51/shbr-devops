@@ -8,7 +8,9 @@ build: build-projects
 	make -C presentation/02-delivery-docker docker-build && \
 	make -C presentation/03-run-docker docker-build && \
 	make -C presentation/03-run-NO_NOHUP docker-build && \
-	make -C presentation/03-run-NO_SCREEN docker-build
+	make -C presentation/03-run-NO_SCREEN docker-build && \
+	make -C presentation/03-run-supervisor docker-build && \
+	make -C presentation/03-run-systemd docker-build
 
 push-projects:
 	make -C projects docker-push
@@ -19,4 +21,6 @@ push: push-projects
 	make -C presentation/02-delivery-deb docker-push && \
 	make -C presentation/03-run-docker docker-push && \
 	make -C presentation/03-run-NO_NOHUP docker-push && \
-	make -C presentation/03-run-NO_SCREEN docker-push
+	make -C presentation/03-run-NO_SCREEN docker-push && \
+	make -C presentation/03-run-supervisor docker-push && \
+	make -C presentation/03-run-systemd docker-push
