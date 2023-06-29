@@ -18,6 +18,6 @@ public class EchoController {
         String path = request.getServletPath();
         String encoding = StandardCharsets.UTF_8.name();
         response.addHeader("X-Shbr-Lang", "java");
-        return (prefix != null ? prefix : "") + URLDecoder.decode(path.substring(1), encoding);
+        return (prefix != null ? prefix : "") + URLDecoder.decode(path.substring(1), encoding) + "\n";
     }
 }

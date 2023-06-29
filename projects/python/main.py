@@ -4,7 +4,7 @@ import os
 
 async def handle(request):
     name = request.match_info.get('name', "")
-    return web.Response(text=f'{os.getenv("PREFIX", "")}{name}',
+    return web.Response(text=f'{os.getenv("PREFIX", "")}{name}\n',
                         headers={'X-Shbr-Lang': 'python'})
 
 

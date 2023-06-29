@@ -18,7 +18,7 @@ spec:
         app: shbr-echo
     spec:
       containers:
-        - image: cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest
+        - image: cr.yandex/crpo6t63ueuf0jf6tm5a/shbr-01-package-docker:latest
           imagePullPolicy: "Always"
           name: shbr-echo
           env:

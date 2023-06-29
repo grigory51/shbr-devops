@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:jammy-20230605
 
 ENV TERM=xterm-256color
 ENV LANG=en_US.UTF-8
@@ -24,6 +24,7 @@ WORKDIR /shbr-echo
 
 COPY java /shbr-echo/java
 COPY python /shbr-echo/python
+COPY go /shbr-echo/go
 RUN git clone https://github.com/grigory51/shbr-devops-cpp.git cpp && cd cpp && git submodule update --init
 
 ENTRYPOINT ["/usr/bin/fish"]

@@ -7,6 +7,8 @@ elif [ "$LANG" == "java" ]; then
   exec -- /usr/bin/java -jar /shbr-echo.jar
 elif [ "$LANG" == "python" ]; then
   exec -- /usr/bin/python3 /shbr-echo.py
+elif [ "$LANG" == "go" ]; then
+  exec -- /shbr-echo-go
 else
   echo 'Unknown language'
   exit 1;

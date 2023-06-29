@@ -1,16 +1,17 @@
-FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-deb:latest as builder
+FROM cr.yandex/crpo6t63ueuf0jf6tm5a/01-package-deb:latest as builder
 
 # Пересборка пакета
 USER shbr
 RUN cd /shbr-echo/build && dpkg-buildpackage -b --no-sign
 
-FROM cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-deb:latest
+FROM cr.yandex/crpo6t63ueuf0jf6tm5a/01-package-deb:latest
 
 # установка пакетов для ключей
 USER root
-RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y gpg apt-utils
-RUN apt-get autoremove -y \
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND="noninteractive" apt-get install -y gpg apt-utils && \
+    apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/cache/* \

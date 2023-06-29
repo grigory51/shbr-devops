@@ -7,7 +7,7 @@ docker swarm init --advertise-addr 10.0.0.2
 docker node ls
 
 # Создать сервис
-docker service create --replicas 3 --name shbr-echo cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest
+docker service create --replicas 3 --name shbr-echo cr.yandex/crpo6t63ueuf0jf6tm5a/01-package-docker:latest
 
 # Список сервисов
 docker service list

@@ -1,11 +1,17 @@
+.EXPORT_ALL_VARIABLES:
+
+IMAGE = cr.yandex/crpo6t63ueuf0jf6tm5a/03-run-supervisor
+DOCKER_BUILDKIT = 1
+BUILDKIT_PROGRESS = plain
+
 docker-build:
-	docker build -t cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-supervisor:latest .
+	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -it -d --name shbr-03-run-supervisor cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-supervisor:latest
+	docker run -it -d --name 03-run-supervisor $$IMAGE:latest
 
 docker-push:
-	docker push cr.yandex/crpamim8dasm0u97qtpf/shbr-03-run-supervisor:latest
+	docker push $$IMAGE:latest
 
 docker-shell:
-	docker exec -it shbr-03-run-supervisor /usr/bin/fish
+	docker exec -it 03-run-supervisor /usr/bin/fish

@@ -3,11 +3,11 @@
   tasks:
     - name: "shbr-echo : container"
       docker_container:
-        name: "shbr-03-run-ansible"
+        name: "03-run-ansible"
         restart_policy: 'always'
         state: 'started'
-        image: 'cr.yandex/crpamim8dasm0u97qtpf/shbr-01-package-docker:latest'
+        image: 'cr.yandex/crpo6t63ueuf0jf6tm5a/01-package-docker:latest'
         env:
-          LANG: java
+          LANG: go
         ports:
           - "10000:10000"

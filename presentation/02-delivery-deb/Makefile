@@ -1,8 +1,14 @@
+.EXPORT_ALL_VARIABLES:
+
+IMAGE = cr.yandex/crpo6t63ueuf0jf6tm5a/02-delivery-deb
+DOCKER_BUILDKIT = 1
+BUILDKIT_PROGRESS = plain
+
 docker-build:
-	docker build -t cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest .
+	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run -it cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest
+	docker run --rm --name 02-delivery-deb -it $$IMAGE:latest
 
 docker-push:
-	docker push cr.yandex/crpamim8dasm0u97qtpf/shbr-02-delivery-deb:latest
+	docker push $$IMAGE:latest

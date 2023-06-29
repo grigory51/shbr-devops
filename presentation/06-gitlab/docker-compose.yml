@@ -2,7 +2,7 @@ version: "2.4"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:15.5.1-ce.0
+    image: gitlab/gitlab-ce:16.1.0-ce.0
     restart: always
     hostname: 'localhost'
     environment:
@@ -21,7 +21,7 @@ services:
       - '/gitlab/logs:/var/log/gitlab'
       - '/gitlab/data:/var/opt/gitlab'
   demo:
-    image: ubuntu:focal
+    image: ubuntu:jammy-20230605
     container_name: demo
     command:
       - /bin/tail
