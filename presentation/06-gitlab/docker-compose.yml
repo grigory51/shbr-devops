@@ -2,7 +2,7 @@ version: "2.4"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:16.1.0-ce.0
+    image: gitlab/gitlab-ce:15.1.0-ce.0
     restart: always
     hostname: 'localhost'
     environment:
@@ -20,11 +20,11 @@ services:
       - 'gitlab-etc:/etc/gitlab'
       - 'gitlab-logs:/var/log/gitlab'
       - 'gitlab-data:/var/opt/gitlab'
-  runner:
-    image: gitlab/gitlab-runner:ubuntu-v16.1.0
-    restart: always
-    volumes:
-      - 'gitlab-runner:/etc/gitlab-runner'
+#  runner:
+#    image: gitlab/gitlab-runner:ubuntu-v16.1.0
+#    restart: always
+#    volumes:
+#      - 'gitlab-runner:/etc/gitlab-runner'
   demo:
     image: ubuntu:jammy-20230605
     container_name: demo
