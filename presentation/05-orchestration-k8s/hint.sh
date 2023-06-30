@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# запустить k8s
-minikube start --driver=none
+minikube start # --driver=none
 
 kubectl create namespace shbr
 kubectl -n shbr apply -f deployment.yaml

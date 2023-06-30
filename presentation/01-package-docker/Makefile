@@ -8,7 +8,7 @@ docker-build:
 	docker build . --platform linux/amd64 -t $$IMAGE:latest -t $$IMAGE
 
 docker-run:
-	docker run --rm --name 01-package-docker --platform linux/amd64 -it $$IMAGE:latest
+	docker run --rm --name 01-package-docker --platform linux/amd64 -p 10000:10000 -e LANG=java -it $$IMAGE:latest
 
 docker-run-shell:
 	docker run --rm --name 01-package-docker -it $$IMAGE:latest /usr/bin/fish

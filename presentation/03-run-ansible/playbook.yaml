@@ -8,6 +8,6 @@
         state: 'started'
         image: 'cr.yandex/crpo6t63ueuf0jf6tm5a/01-package-docker:latest'
         env:
-          LANG: go
+          LANG: python
         ports:
           - "10000:10000"

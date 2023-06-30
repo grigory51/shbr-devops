@@ -9,7 +9,7 @@ docker-build-registry:
 	docker build -t registry:local -f Dockerfile.registry .
 
 docker-run-registry:
-	docker run --rm --name "02-delivery-docker:registry" -v 02-delivery-docker-registry:/var/lib/registry:rw -p 5001:5000 registry:local
+	docker run --rm --name 02-delivery-docker-registry -v 02-delivery-docker-registry:/var/lib/registry:rw -p 5001:5000 registry:local
 
 docker-shell-registry:
-	docker exec -it registry /bin/bash
+	docker exec -it 02-delivery-docker-registry /bin/bash

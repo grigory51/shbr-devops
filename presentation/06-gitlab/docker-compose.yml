@@ -17,9 +17,14 @@ services:
       - '30080:30080'
       - '10022:22'
     volumes:
-      - '/gitlab/etc:/etc/gitlab'
-      - '/gitlab/logs:/var/log/gitlab'
-      - '/gitlab/data:/var/opt/gitlab'
+      - 'gitlab-etc:/etc/gitlab'
+      - 'gitlab-logs:/var/log/gitlab'
+      - 'gitlab-data:/var/opt/gitlab'
+  runner:
+    image: gitlab/gitlab-runner:ubuntu-v16.1.0
+    restart: always
+    volumes:
+      - 'gitlab-runner:/etc/gitlab-runner'
   demo:
     image: ubuntu:jammy-20230605
     container_name: demo
@@ -27,3 +32,9 @@ services:
       - /bin/tail
       - -f
       - /dev/null
+
+volumes:
+  gitlab-etc: {}
+  gitlab-logs: {}
+  gitlab-data: {}
+  gitlab-runner: {}
